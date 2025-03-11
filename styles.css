@@ -1,0 +1,280 @@
+:root {
+    --blue-sky: #5c94fc;
+    --grass-green: #00c800;
+    --path-color: #ffd700;
+    --path-border: #aa8800;
+    --space-blue: #4444ff;
+    --space-red: #ff4444;
+    --space-green: #44ff44;
+    --space-coin: #ffcc00;
+    --space-star: #ffff44;
+    --space-item: #ff44ff;
+    --space-chance: #44ffff;
+    --space-bowser: #aa4400;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    background-color: var(--blue-sky);
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    margin-bottom: 30px;
+}
+
+.board {
+    flex: 0 0 85%;
+    background-color: #f0f0f0; /* for visual distinction */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.space {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.space:hover {
+    transform: scale(1.2);
+    z-index: 100;
+}
+
+.blue {
+    background-color: var(--space-blue);
+}
+
+.red {
+    background-color: var(--space-red);
+}
+
+.green {
+    background-color: var(--space-green);
+}
+
+.coin {
+    background-color: var(--space-coin);
+}
+
+.star {
+    background-color: var(--space-star);
+    color: #000;
+}
+
+.item {
+    background-color: var(--space-item);
+}
+
+.chance {
+    background-color: var(--space-chance);
+    color: #000;
+}
+
+.bowser {
+    background-color: var(--space-bowser);
+}
+
+.path {
+    position: absolute;
+    height: 15px;
+    background-color: var(--path-color);
+    border: 2px solid var(--path-border);
+    border-radius: 8px;
+    z-index: 5;
+}
+
+.path-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #ff5555;
+    z-index: 6;
+    transform-origin: center bottom;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 200;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.space:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.legend {
+    flex: 0 0 15%;
+    background-color: #e0e0e0; /* for visual distinction */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    margin-right: 10px;
+}
+
+/* Player peon styles */
+.player {
+    position: absolute;
+    width: 30px;
+    height: 45px;
+    z-index: 20;
+    transition: all 0.5s ease-in-out;
+}
+
+.player-head {
+    width: 25px;
+    height: 25px;
+    background-color: #ff0000;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.player-body {
+    width: 20px;
+    height: 20px;
+    background-color: #0000ff;
+    border: 2px solid #000;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Dice button */
+.dice-button {
+    top: 20px;
+    left: 20px;
+    background-color: #ff4444;
+    color: white;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+}
+
+.dice-button:hover {
+    transform: scale(1.05);
+    background-color: #ff6666;
+}
+
+.dice-button:active {
+    transform: scale(0.95);
+}
+
+/* Dice result modal */
+.dice-modal {
+    position: absolute;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 24px;
+    font-weight: bold;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    right: 0;
+    left: 25%;
+    border-radius: 4px;
+    margin-top: 0px;
+}
+
+
+
+.dice-modal.show {
+    transform: translateY(0);
+    margin-top: 12px;
+}
+
+.dice-result {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: black;
+}
+
+/* Dice dots */
+.dice-dot {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+}

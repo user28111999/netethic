@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maquette JS Net'Ethic</title>
+    <title>Net'Ethic</title>
     <link rel="icon" href="https://assoflorimont.fr/wp-content/uploads/2023/08/cropped-Favicon-32x32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="https://assoflorimont.fr/wp-content/uploads/2023/08/cropped-Favicon-180x180.png" />
     <link rel="icon" href="https://assoflorimont.fr/wp-content/uploads/2023/08/cropped-Favicon-192x192.png" sizes="192x192" />
@@ -11,61 +10,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-            
-        <div class="dice-modal" id="diceModal">
-            <div class="dice-result" id="diceResult">6</div>
-            <p id="moveMessage">Moving from space 1 to space 7</p>
-        </div>
-        
-        <div class="board" id="board">
-            <!-- Player peon -->    
-            <div class="player" id="player">
-                <div class="player-head"></div>
-                <div class="player-body"></div>
-            </div>
-            
-        </div>
-        
-        <div class="legend">
-            <button class="dice-button" id="diceButton">Lancer le dé de 6</button>
-            <div class="legend-item">
-                <div class="legend-color--item">
-                    <div class="legend-color blue"></div>
-                </div>
-                <span>Gain de points ?</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color red"></div>
-                <span>Perte de points ?</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color green"></div>
-                <span>Case évenement</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color coin"></div>
-                <span>Case Mime</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color star"></div>
-                <span>Case Dessin</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color item"></div>
-                <span>Case Question</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color chance"></div>
-                <span>Case chance</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color bowser"></div>
-                <span>Case malchance</span>
-            </div>
+    <div id="game-board"><canvas id="path-canvas"></canvas></div>
+    <div id="player">J1</div>
+    <div id="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-question"></h2>
+            <div id="modal-answers"></div>
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
